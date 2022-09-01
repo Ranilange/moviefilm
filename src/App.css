@@ -1,7 +1,107 @@
 .App {
   text-align: center;
+  background: #e52d27;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #b31217, #e52d27);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #b31217, #e52d27);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100vh;
+
 }
 
 table {
   width: 100vw;
+}
+
+
+
+/* CSS */
+.button-24 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+
+.Input-text:placeholder-shown+.Input-label {
+  visibility: hidden;
+  z-index: -1;
+}
+
+.Input-text:not(:placeholder-shown)+.Input-label,
+.Input-text:focus:not(:placeholder-shown)+.Input-label {
+  visibility: visible;
+  z-index: 1;
+  opacity: 1;
+  transform:
+    translate3d(0, var(--labelTransformedPosY), 0) scale(var(--labelScaleFactor));
+  transition:
+    transform var(--inputTransitionDuration),
+    visibility 0ms,
+    z-index 0ms;
+}
+
+.Input {
+  position: relative;
+}
+
+.Input-text {
+  display: block;
+  margin: 0;
+  padding: var(--inputPaddingV) var(--inputPaddingH);
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--inputFontSize);
+  font-weight: inherit;
+  line-height: var(--inputLineHeight);
+  border: none;
+  border-radius: 0.4rem;
+  transition: box-shadow var(--transitionDuration);
+  height: 4vh;
+}
+
+.Input-text::placeholder {
+  color: #275166;
+}
+
+.Input-text:focus {
+  outline: none;
+  box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+}
+
+.table-headers {
+  background-color: black;
+  color: wheat;
 }

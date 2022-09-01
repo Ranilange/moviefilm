@@ -3,11 +3,12 @@ import './App.css';
 import React, { useState } from 'react';
 import MovieRow from './components/MovieRow';
 import Iframe from './components/Iframe';
-
+import ButtonAppBar from './components/AppBar';
 function App() {
   const [titleInput, setTitleInput] = useState("")
   const [imageInput, setImageInput] = useState("")
-  const [iframe, setIframe] = useState();
+
+
   //  אנחנו רוצים לדלחוף למערך הישן כל פעם אובייקט חדש עם שתי ערכים שאפשר לשנות ואז בסוף בגלל שיש לנו מאפ אז הוא יעבור על הכל וידפיס לנו
   const addNewMovie = () => {
     // יצרתי העתק של המערך הישן
@@ -16,7 +17,8 @@ function App() {
     newMovieArray.push({
       movieTitle: titleInput,
       img: imageInput,
-      iframe: iframe,
+
+
     })
     setMoviesArray(newMovieArray)
   }
@@ -39,22 +41,29 @@ function App() {
   ])
 
 
-
+  const [trailer, setTrailer] = useState("")
+  const [open, setOpen] = useState(false)
 
   return (
     <div className="App">
+      <ButtonAppBar></ButtonAppBar>
+      <br></br><br></br>
       <h1>my favorite movie</h1>
       {/* פונקציה שהופכת את הסטייט להפך שלה ברגע שלוחצים על הפכתור */}
-      <button onClick={() => setIsOpen(!isOpen)}>add new movie</button>
+      <button class="button-24" role="button" onClick={() => setIsOpen(!isOpen)}>add new movie</button>
       {
         isOpen ? (
           <div>
-            <input type="text" placeholder='title' onChange={(e) => setTitleInput(e.target.value)}></input>
-            <input type="text" placeholder='image' onChange={(e) => setImageInput(e.target.value)}></input>
-            <input type="text" placeholder='trailer-iframe' onChange={(e) => setIframe(e.target.value)}></input>
-            <button onClick={() => addNewMovie()}>save</button>
-          </div>) : (<div></div>)}
-      <table>
+            <input className='Input-text' type="text" placeholder='title' onChange={(e) => setTitleInput(e.target.value)}></input>
+            <br></br>
+            <input className='Input-text' type="text" placeholder='image' onChange={(e) => setImageInput(e.target.value)}></input>
+            <br></br>
+            <input className='Input-text' type="text" placeholder='trailer-iframe' onChange={(e) => setTrailer(e.target.value)} ></input>
+            <button class="button-24" role="button" onClick={() => addNewMovie()}>save</button>
+          </div>) : (<div></div>)
+      }
+      <br></br>
+      <table className='table-headers'>
         <tr>
           <th>image</th>
           <th>title</th>
@@ -62,7 +71,7 @@ function App() {
         </tr>
         {moviesArray.map((movie, index) => {
           return (
-            <MovieRow movieTitle={movie.movieTitle} img={movie.img}  ></MovieRow>
+            <MovieRow setOpen={setOpen} movieTitle={movie.movieTitle} img={movie.img} trailer={trailer} setTrailer={setTrailer} ></MovieRow>
 
           );
 
@@ -70,9 +79,12 @@ function App() {
 
         )
         }
+
+        <Iframe open={open} trailer={trailer} setTrailer={setTrailer}></Iframe>
+
       </table>
 
-      <Iframe iframe={iframe}></Iframe>
+
 
     </div >
   );
