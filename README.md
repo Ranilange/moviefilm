@@ -8,16 +8,5 @@ note.. there is still work to do on the desgining of the site.
 
   
 
-### Goolo Swiper
-An interactive swiper, you like it, you swipe it.
-leave the rest to us :)
-
-<p align="center"><img src="./ImgsForReadMe/Swiper-screenshot.png" width="300" /></p>
 
 
-
-
-## Technologies:
-
-### Client-side:
-* React.JS
